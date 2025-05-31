@@ -1,0 +1,12 @@
+import pandas as pd
+
+
+# читаем файл
+data = pd.read_csv('students.csv', sep=',')
+# находим студ с баллом выше 80
+print(data[data['Score'] > 80])
+# сорт студентов по убыв балла
+print(data.sort_values(by='Score', ascending=False))
+# выводим студ с макс возр
+print(data[data['Age'] == data['Age'].max()])
+print(data[data['Age'] == data['Age'].min()])
