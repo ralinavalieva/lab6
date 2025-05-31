@@ -1,0 +1,22 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# читаем файл
+data = pd.read_csv('/students.csv', sep=',')
+plt.subplot(2, 1, 1)
+plt.title('распределение баллов среди студентов')
+plt.hist(data['Score'], edgecolor='black')
+plt.xlabel('баллы')
+plt.ylabel('кол-во студентов')
+
+
+plt.subplot(2, 1, 2)
+avg_data = data.groupby('Group')['Score'].mean()
+plt.title('средний балл по группам')
+avg_data.plot.bar(rot=0)
+plt.xlabel('группа')
+plt.ylabel('средний балл')
+
+plt.tight_layout()
+plt.show()
+     
