@@ -1,0 +1,11 @@
+import pandas as pd
+
+
+# читаем файл
+data = pd.read_csv('students_with_gaps.csv', sep=',')
+# проверяем, есть ли пропуски в данных
+print(data.isnull().sum())
+# заполняем пропуски в столбце Score средним значением
+new_data = data.fillna(value={'Score': data['Score'].mean()})
+# удаляем стр с пропусками в остальных столбцах
+newest_data = new_data.dropna()
